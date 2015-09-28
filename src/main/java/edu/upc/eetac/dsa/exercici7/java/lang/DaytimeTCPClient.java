@@ -17,9 +17,9 @@ public class DaytimeTCPClient {
         String server = args[0];
         int port = Integer.parseInt(args[1]);
 
-        Socket socket = new Socket(server, port);
+        Socket socket = new Socket(server, port);//Creacion de socket de conexion
         BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-        String time = reader.readLine();
+        String time = reader.readLine();//Atributo para recibir la fecha y hora que entrega el servidor
         System.out.println(time);
     }
 }

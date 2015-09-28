@@ -13,12 +13,14 @@ import java.util.List;
  */
 public class ChatServerThread implements Runnable {
     private static List<ChatServerThread> threadList = Collections.synchronizedList(new ArrayList<ChatServerThread>());
+    //Crea una lista de threads para contener todos los procesos de los chats
 
     private Socket socket = null;
     private String username = null;
     private BufferedReader reader = null;
     private PrintWriter writer = null;
 
+    //Constructor
     public ChatServerThread(Socket socket) throws IOException {
         this.socket = socket;
 

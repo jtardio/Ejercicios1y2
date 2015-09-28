@@ -12,10 +12,10 @@ public class DaytimeTCPServer {
     private final static int DEFAULT_PORT = 12345;
 
     public static void main(String[] args) throws IOException {
-        int port = (args.length == 1) ? Integer.parseInt(args[0]) : DEFAULT_PORT;
+        int port = (args.length == 1) ? Integer.parseInt(args[0]) : DEFAULT_PORT;//Comprobación del argumento puerto
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss"); //Establece formato de fecha
-        ServerSocket serverSocket = new ServerSocket(port);
+        ServerSocket serverSocket = new ServerSocket(port);//Socket de conexion
 
         while (true) {
             Socket socket = serverSocket.accept();
