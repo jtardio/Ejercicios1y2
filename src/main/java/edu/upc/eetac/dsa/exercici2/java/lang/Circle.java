@@ -7,11 +7,12 @@ public class Circle extends AbstractShape {
 
     private double radio;
 
-    //Constructor con super??
+    //Constructor con super contruye desde la clase AbstractShape
 
     public Circle(double radio) {
 
-        super("circle");
+       super("circle");
+        this.radio=radio;
     }
 
     //Obterner y asignar un radio al objeto de clase Circle
@@ -27,6 +28,7 @@ public class Circle extends AbstractShape {
     //Retorna el area geométrica del Circle
 
     public double area() {
+
         return Math.PI * radio * radio;
     }
 }

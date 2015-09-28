@@ -17,6 +17,7 @@ public class AverageFileCalculator {
             reader = new BufferedReader(new FileReader(file)); //objeto de buffer de lectura
             String line = null;//variable donde almacenar la frase que se lee en cada linea
 
+            //Bucle que va recorriendo linea por linea el archivo
             while ((line = reader.readLine()) != null) {
                 try {
                     int number = Integer.parseInt(line); //convierte strings a enteros

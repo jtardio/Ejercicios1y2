@@ -1,11 +1,12 @@
 package edu.upc.eetac.dsa.exercici2.java.lang;
 
 /**
- * Created by User on 23/09/2015.
+ * Created by Jesús Tardío on 23/09/2015.
 **/
 public class AppInheritance {
     public static void main(String[] args) {
-        Shape[] shapes = new Shape[2];
+
+        Shape[] shapes = new Shape[2];//crea array de Shapes
         shapes[0] = new Circle(2.5);
         shapes[1] = new Rectangle(3, 5);
 

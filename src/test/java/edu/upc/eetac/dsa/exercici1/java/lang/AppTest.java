@@ -1,4 +1,4 @@
-package edu.upc.eetac.dsa.exercises.java.lang;
+package edu.upc.eetac.dsa.exercici1.java.lang;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
