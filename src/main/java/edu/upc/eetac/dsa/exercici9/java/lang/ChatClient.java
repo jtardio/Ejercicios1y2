@@ -49,10 +49,10 @@ public class ChatClient implements Runnable {
     @Override
     public void run() {
         try {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));//Entrada de datos de usuario
             System.out.println("Enter your username: ");
             String username = reader.readLine();
-            join(username);
+            join(username); //Conexion al chat
 
             System.out.println("start chat");
             String msg = null;
@@ -65,7 +65,7 @@ public class ChatClient implements Runnable {
         }
     }
 
-    private void join(String username) throws IOException {
+    private void join(String username) throws IOException { //Funcion para unirse al chat
         socket = new Socket(server, port);
         reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         (new Thread((new ReaderThread(reader)))).start();
@@ -75,19 +75,19 @@ public class ChatClient implements Runnable {
         writer.flush();
     }
 
-    private void leave() throws IOException {
+    private void leave() throws IOException {//Funcion para abandonar chat
         writer.println("LEAVE");
         writer.flush();
 
         socket.close();
     }
 
-    private void send(String msg) {
+    private void send(String msg) {//Funcion para agregar mensajes
         writer.println("MESSAGE " + msg);
         writer.flush();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) {//Main que inicia la sesion por parámetros
         if (args.length < 2) {
             System.err.println("You have to pass the server name and the server port");
             System.exit(-1);
