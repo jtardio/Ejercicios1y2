@@ -11,19 +11,20 @@ public class ChatServer implements Runnable {
     private int port;
     private Thread thread;
 
-    public final static int DEFAULT_PORT = 3333;
+    public final static int DEFAULT_PORT = 3333;//Puerto por defecto
 
     public ChatServer(int port) {
         this.port = port;
-    }
+    }//Instancia de la clase creada con puerto
 
+    //Funcion de arranque del servidor
     public void startServer() {
         if (thread == null)
             (thread = new Thread(this, "Server main thread")).start();
     }
 
     @Override
-    public void run() {
+    public void run() { //Procesos a realizar por el servidor
         try {
             ServerSocket ss = new ServerSocket(port);
             System.out.println("Chat server up, listening at " + port);
@@ -36,6 +37,7 @@ public class ChatServer implements Runnable {
         }
     }
 
+    //Main que arranca el servidor y recibe por argumentos desde el cliente el puerto de conexion
     public static void main(String[] args) {
         int port = (args.length == 1) ? Integer.parseInt(args[0]) : DEFAULT_PORT;
         ChatServer server = new ChatServer(port);

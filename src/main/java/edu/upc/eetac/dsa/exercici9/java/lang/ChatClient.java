@@ -35,10 +35,12 @@ public class ChatClient implements Runnable {
     private BufferedReader reader = null;
     private PrintWriter writer = null;
 
+    //Constructor para instanciar el cliente con puerto por defecto
     public ChatClient(String server) {
         this(server, ChatServer.DEFAULT_PORT);
     }
 
+    //constructor con nombre de servidor y puerto
     public ChatClient(String server, int port) {
         this.server = server;
         this.port = port;

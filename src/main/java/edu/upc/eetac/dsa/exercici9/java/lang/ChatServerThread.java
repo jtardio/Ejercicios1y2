@@ -20,7 +20,7 @@ public class ChatServerThread implements Runnable {
     private BufferedReader reader = null;
     private PrintWriter writer = null;
 
-    //Constructor
+    //Constructor de la clase que recibe el socket y crea los atributos de lectura y escritura
     public ChatServerThread(Socket socket) throws IOException {
         this.socket = socket;
 
@@ -34,29 +34,34 @@ public class ChatServerThread implements Runnable {
             String[] msg = null;
             do {
                 msg = reader.readLine().split(" ", 2);
+                //Procesos de los diferentes tipos de mensaje
                 if (msg[0].equals("JOIN")) {
                     username = msg[1];
                     Thread.currentThread().setName(username + " thread");
                     threadList.add(this);
                     broadcast("estoy dentro.");
+
+                    //Envio de mensaje
                 } else if (msg[0].equals("MESSAGE")) {
                     broadcast(msg[1]);
                 }
-            } while (!msg[0].equals("LEAVE"));
+            } while (!msg[0].equals("LEAVE"));//Palabra clave para salir del chat
 
-            threadList.remove(this);
+            threadList.remove(this);//Una vez abandona el chat elimina los threads generados
             broadcast("me piro.");
-            socket.close();
+            socket.close();//Cierra conexion
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    //Funcion que envia los mensajes a todos los integrantes del chat
     private void broadcast(String msg) {
         for (ChatServerThread t : threadList)
             t.send(username + "> " + msg);
     }
 
+    //Funcion para enviar mensaje de texto
     private void send(String msg) {
         writer.println(msg);
         writer.flush();
